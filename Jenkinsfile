@@ -14,6 +14,7 @@ pipeline {
 				sh "svn revert -R ."
 				sh "svn cleanup . --remove-unversioned --remove-ignored ."
 				sh "patch -p0 < ${env.WORKSPACE_TMP}/tests/testing.patch"
+				echo "${env.SVN_REVISION}"
 			}
 		}
 
