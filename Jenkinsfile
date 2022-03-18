@@ -11,10 +11,10 @@ pipeline {
 				dir ("${env.WORKSPACE_TMP}/appimagebuilder") {
 					git changelog: false, poll: false, url: 'https://github.com/MatthewRFennell/speed-dreams-appimage-builer'
 				}
+				sh "svn upgrade"
 				sh "svn revert -R ."
 				sh "svn cleanup . --remove-unversioned --remove-ignored ."
 				sh "patch -p0 < ${env.WORKSPACE_TMP}/tests/testing.patch"
-				echo "${env.SVN_REVISION}"
 			}
 		}
 
