@@ -4,7 +4,9 @@ pipeline {
 	stages {
 		stage('Checkout') {
 			steps {
-				svn 'svn://svn.code.sf.net/p/speed-dreams/code/trunk'
+				retry (5) {
+					svn 'svn://svn.code.sf.net/p/speed-dreams/code/trunk'
+				}
 				dir ("${env.WORKSPACE_TMP}/tests") {
 					git changelog: false, poll: false, url: 'https://github.com/MatthewRFennell/speed-dreams-tests.git'
 				}
