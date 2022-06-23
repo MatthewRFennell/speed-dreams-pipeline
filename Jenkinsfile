@@ -67,7 +67,7 @@ pipeline {
 
 		stage('Publish AppImage') {
 			steps {
-				archiveArtifacts artifacts: 'speed-dreams-latest-trunk-x86_64.AppImage', followSymlinks: false, onlyIfSuccessful: true
+				archiveArtifacts artifacts: 'build/speed-dreams-latest-trunk-x86_64.AppImage', followSymlinks: false, onlyIfSuccessful: true
 			}
 		}
 	}
