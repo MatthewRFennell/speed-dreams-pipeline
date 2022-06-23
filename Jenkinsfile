@@ -58,7 +58,10 @@ pipeline {
 
 		stage('Generate AppImage') {
 			steps {
-				sh "appimage-builder --recipe ${env.WORKSPACE_TMP}/appimagebuilder/AppImageBuilder.yml"
+				dir ("build") {
+					sh "mv ${env.WORKSPACE_TMP}/appimagebuilder/net.speed_dreams.desktop ."
+					sh "appimage-builder --recipe ${env.WORKSPACE_TMP}/appimagebuilder/AppImageBuilder.yml"
+				}
 			}
 		}
 
